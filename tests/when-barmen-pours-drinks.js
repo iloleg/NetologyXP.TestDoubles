@@ -5,15 +5,20 @@ var Barmen = require('../src/barmen');
 var Visitor = require('../src/visitor');
 var CupboardStub = require('../tests/fakes/cupboard-stub');
 var CalendarStub = require('../tests/fakes/calendar-stub');
+var SmsServiceMock = require('../tests/fakes/sms-service-mock');
 
 suite('When barmen pours drinks', function () {
     let visitor = {};
     let barmen = {};
-    let calendar = new CalendarStub();
+    let calendar = {};
+    let smsService = {};
 
     setup(function () {
         visitor = new Visitor();
         visitor.sober();
+
+        calendar = new CalendarStub();
+        smsService = new SmsServiceMock();
     });
 
     suite('cupboard is full', function () {
@@ -25,7 +30,7 @@ suite('When barmen pours drinks', function () {
         });
 
         test('barman pours 200 milliliters of whisky in my glass', function () {
-            barmen = new Barmen(alwaysFullCupboard);
+            barmen = new Barmen(alwaysFullCupboard, smsService);
 
             var volumeInGlass = barmen.pour("whisky", 200, visitor, new CalendarStub());
 
@@ -34,7 +39,7 @@ suite('When barmen pours drinks', function () {
 
         test('barmen pours x2 volume on a Thursday', function () {
             calendar.today = "Thursday";
-            barmen = new Barmen(alwaysFullCupboard);
+            barmen = new Barmen(alwaysFullCupboard, smsService);
 
             var volumeInGlass = barmen.pour("whisky", 100, visitor, calendar);
 
@@ -52,13 +57,33 @@ suite('When barmen pours drinks', function () {
         });
 
         test('barmen rejects for a drink', function () {
-            barmen = new Barmen(emptyCupboard);
+            barmen = new Barmen(emptyCupboard, smsService);
 
             var action = () => {
-                barmen.pour("whisky", 200, visitor, new CalendarStub())
+                barmen.pour("whisky", 200, visitor, calendar)
             };
 
             assert.throws(action, /Sorry. Not enough whisky/);
         });
+
+        test('sms to buy drink is sent to boss', function () {
+            smsService = new SmsServiceMock();
+            barmen = new Barmen(emptyCupboard, smsService);
+
+            runWithTryCatch(() => {
+                barmen.pour("vodka", 100, visitor, calendar)
+            });
+
+            assert.equal(smsService.lastSentSms, "Hello. We have run out of vodka. Please buy several bottles.");
+        });
+
+        function runWithTryCatch(action) {
+            try {
+                action();
+            } catch (exception) {
+
+            }
+        }
     });
+
 });
