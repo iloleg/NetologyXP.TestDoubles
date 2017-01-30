@@ -11,7 +11,7 @@ class Barmen {
         }
 
         if (!this._cupboard.hasDrink(drinkName, volume)) {
-            throw new Error('Not enough ' + drinkName);
+            throw new Error('Sorry. Not enough ' + drinkName);
         }
 
         if (visitor.isTotallyDrunk()) {
