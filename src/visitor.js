@@ -1,23 +1,23 @@
 class Visitor {
     constructor() {
-        this.totallyDrunk = 0;
+        this.totalDrinkVolume = 0;
     }
 
     drink(volume) {
-        this.totallyDrunk += volume;
+        this.totalDrinkVolume += volume;
         return volume;
     }
 
     sober() {
-        this.totallyDrunk = 0;
+        this.totalDrinkVolume = 0;
     }
 
-    isDrunk() {
-        return this.totallyDrunk > 150;
+    isTotallyDrunk() {
+        return this.totalDrinkVolume > 150;
     }
 
     getTotallyDrunk() {
-        return this.totallyDrunk;
+        return this.totalDrinkVolume;
     }
 }
 

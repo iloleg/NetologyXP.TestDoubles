@@ -14,7 +14,7 @@ class Barmen {
             throw new Error('Not enough ' + drinkName);
         }
 
-        if (visitor.isDrunk()) {
+        if (visitor.isTotallyDrunk()) {
             throw new Error('You are drunk. Come back later.');
         }
 
