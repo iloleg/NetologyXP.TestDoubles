@@ -15,7 +15,7 @@ suite('When barmen pours drinks', function () {
     });
 
     suite('cupboard is full', function () {
-        test('barman pours 200 milliliters of whisky in my glass', function () {
+        test('barmen pours 200 milliliters of whisky in my glass', function () {
 
         });
 
