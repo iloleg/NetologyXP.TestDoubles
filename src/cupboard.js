@@ -2,16 +2,32 @@
 
 class Cupboard {
     isOpen() {
+        // Database request
+        //
+        // return repository.hasAnyDrink();
+        // ...
+        //
+
         return true;
     };
 
     hasDrink(drinkName, volume) {
-        /* Предположим что здесь мы ходим в базу данных*/
+        // Database request
+        //
+        // repository.hasDrink(drinkName);
+        // ...
+        //
+
         return true;
     };
 
     getDrink(drinkName, volume) {
-        /* Предположим что здесь мы ходим в базу данных*/
+        // Database request
+        //
+        // repository.getDrinkBy(drinkName, volume);
+        // ...
+        //
+
         return volume;
     }
 }
