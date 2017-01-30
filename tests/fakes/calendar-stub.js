@@ -5,11 +5,11 @@ class CalendarStub {
         this._today = "";
     }
 
-    get today() {
+    today() {
         return this._today;
     }
 
-    set today(value) {
+    setToday(value) {
         this._today = value;
     }
 }

@@ -1,8 +1,9 @@
 "use strict";
 
-class Calendar
-{
-
+class Calendar {
+    today() {
+        return "";
+    }
 }
 
 module.exports = Calendar;

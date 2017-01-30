@@ -1,10 +1,12 @@
 "use strict";
 
 var assert = require('chai').assert;
+var sinon = require('sinon');
 var Barmen = require('../src/barmen');
 var Visitor = require('../src/visitor');
 var CupboardStub = require('../tests/fakes/cupboard-stub');
 var CalendarStub = require('../tests/fakes/calendar-stub');
+var Calendar = require('../src/calendar');
 var SmsServiceMock = require('../tests/fakes/sms-service-mock');
 
 suite('When barmen pours drinks', function () {
@@ -32,18 +34,21 @@ suite('When barmen pours drinks', function () {
         test('barman pours 200 milliliters of whisky in my glass', function () {
             barmen = new Barmen(alwaysFullCupboard, smsService);
 
-            var volumeInGlass = barmen.pour("whisky", 200, visitor, new CalendarStub());
+            var volumeInGlass = barmen.pour("whisky", 200, visitor, calendar);
 
             assert.equal(200, volumeInGlass);
         });
 
         test('barmen pours x2 volume on a Thursday', function () {
-            calendar.today = "Thursday";
+            var calendarStub = sinon.stub(Calendar.prototype)
+                .today.returns("Thursday");
+
             barmen = new Barmen(alwaysFullCupboard, smsService);
 
-            var volumeInGlass = barmen.pour("whisky", 100, visitor, calendar);
+            var volumeInGlass = barmen.pour("whisky", 100, visitor, new Calendar());
 
             assert.equal(100 * 2, volumeInGlass);
+            calendarStub.restore();
         });
 
     });

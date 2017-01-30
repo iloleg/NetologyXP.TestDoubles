@@ -22,7 +22,7 @@ class Barmen {
             throw new Error('You are drunk. Come back later.');
         }
 
-        if (calendar.today === "Thursday") {
+        if (calendar.today() === "Thursday") {
             return 2 * this._cupboard.getDrink(drinkName, volume);
         }
 
