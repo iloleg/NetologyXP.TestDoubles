@@ -1,0 +1,30 @@
+{
+  "name": "netology-xp-unit-testing-test-doubles",
+  "version": "1.0.0",
+  "description": "XP. Unit testing. Test Doubles",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha --ui tdd -R spec tests/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmartStepGroupTrainings/NetologyXP.TestDoubles.git"
+  },
+  "keywords": [
+    "XP",
+    "unit-testing",
+    "test-doubles",
+    "stub",
+    "mock",
+    "fake objects",
+    "smart-unit-tests",
+    "js"
+  ],
+  "author": "SmartStepGroup",
+  "devDependencies": {
+    "mocha": "~2.4.5",
+    "chai": "~3.5.0",
+    "chai-http": "~2.0.1",
+    "chai-string": "~1.2.0",
+    "sinon": "latest"
+  }
+}
