@@ -5,7 +5,7 @@ class Barmen {
         this._cupboard = cupboard;
     }
 
-    pour(drinkName, volume, visitor) {
+    pour(drinkName, volume, visitor, calendar = new CalendarStub()) {
         if (volume < 0) {
             throw new Error('Invalid volume of whisky');
         }
@@ -16,6 +16,10 @@ class Barmen {
 
         if (visitor.isTotallyDrunk()) {
             throw new Error('You are drunk. Come back later.');
+        }
+
+        if (calendar.today === "Thursday") {
+            return 2 * this._cupboard.getDrink(drinkName, volume);
         }
 
         return this._cupboard.getDrink(drinkName, volume);
