@@ -3,8 +3,8 @@
 var assert = require('chai').assert;
 var Barmen = require('../src/barmen');
 var Visitor = require('../src/visitor');
-var CupboardStub = require('../tests/cupboard-stub');
-var CalendarStub = require('../tests/calendar-stub');
+var CupboardStub = require('../tests/fakes/cupboard-stub');
+var CalendarStub = require('../tests/fakes/calendar-stub');
 
 suite('When barmen pours drinks', function () {
     let visitor = {};
