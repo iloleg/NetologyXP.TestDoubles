@@ -16,7 +16,7 @@ suite('When barmen pours drinks', function () {
         });
 
         test('barman pours 200 milliliters of whisky in my glass', function () {
-            barmen = new Barmen(new Cupboard());
+            barmen = new Barmen(new CupboardStub());
 
             var volumeInGlass = barmen.pour("whisky", 200, visitor);
 
@@ -24,3 +24,17 @@ suite('When barmen pours drinks', function () {
         });
     });
 });
+
+class CupboardStub {
+    isOpen() {
+        return true;
+    };
+
+    hasDrink(drinkName, volume) {
+        return true;
+    };
+
+    getDrink(drinkName, volume) {
+        return volume;
+    }
+}
