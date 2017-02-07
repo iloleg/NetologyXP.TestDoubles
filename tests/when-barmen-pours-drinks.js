@@ -1,6 +1,6 @@
 "use strict";
 
-var assert = require('chai').assert;
+//var assert = require('chai').assert;
 var Barmen = require('../src/barmen');
 var Visitor = require('../src/visitor');
 var Cupboard = require('../src/cupboard');
