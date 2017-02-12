@@ -3,6 +3,11 @@
 class Visitor {
     constructor() {
         this.totalDrinkVolume = 0;
+        this._birthday = null;
+    }
+
+    set check(value) {
+        this._check = value;
     }
 
     drink(volume) {
@@ -21,6 +26,19 @@ class Visitor {
     getTotallyDrunk() {
         return this.totalDrinkVolume;
     }
+
+    set birthday(value) {
+        this._birthday = value;
+    }
+
+    get birthday() {
+        return this._birthday;
+    }
+
 }
 
 module.exports = Visitor;
+
+
+
+

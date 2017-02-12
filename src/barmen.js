@@ -10,6 +10,8 @@ class Barmen {
             throw new Error('Sorry. Not enough ' + drinkName);
         }
 
+
+        visitor.check = drinkName + ' - ' + volume;
         return this._cupboard.getDrink(drinkName, volume);
     }
 }
