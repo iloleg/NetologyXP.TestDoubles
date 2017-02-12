@@ -6,6 +6,7 @@ var Barmen = require('../src/barmen');
 var Visitor = require('../src/visitor');
 var Cupboard = require('../src/cupboard');
 var CalendarD = require('../dd/calendar_d');
+var Visitor_ = require('../dd/visitor_')
 
 suite('When barmen pours drinks', function () {
     let visitor = {};
