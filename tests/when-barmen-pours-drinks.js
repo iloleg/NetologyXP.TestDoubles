@@ -40,6 +40,15 @@ suite('When barmen pours drinks', function () {
             assert.equal(3 * 100, volumeInGlass);
         });
 
+        test('I received a check', function () {
+            let barmen = new Barmen(cupboard);
+            let visitor = new Visitor_();
+
+            barmen.pour('whisky', 100, visitor, calendar);
+
+            assert.equal('whisky - 100', visitor.check);
+        });
+
     });
 
     suite('cupboard is empty', function () {
